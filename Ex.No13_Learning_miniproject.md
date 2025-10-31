@@ -1,4 +1,4 @@
-# Ex.No: 10 Learning – Use Supervised Learning  
+# Ex.No: 10 Learning – Machine Learning  
 ### DATE: 31-10-2025                                                                          
 ### REGISTER NUMBER : 212223060115
 ### AIM: 
