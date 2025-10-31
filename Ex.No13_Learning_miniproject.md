@@ -1,10 +1,52 @@
 # Ex.No: 10 Learning – Use Supervised Learning  
-### DATE:                                                                            
-### REGISTER NUMBER : 
+### DATE: 31-10-2025                                                                          
+### REGISTER NUMBER : 212223060115
 ### AIM: 
 To write a program to train the classifier to predict whether a tsunami can occur or not.
 ###  Algorithm:
+#### 1. Load Data
 
+- Read the earthquake dataset into a data structure (e.g., DataFrame).
+
+#### 2. Preprocess Data
+
+- Separate features X and target y (tsunami).
+
+- Handle missing values if any (optional).
+
+#### 3. Split Dataset
+
+- Divide data into training set and test set (e.g., 80% train, 20% test).
+
+- Maintain class balance using stratification.
+
+#### 4. Train Model
+
+- Initialize a Random Forest Classifier.
+
+- Fit the model on training data X_train and y_train.
+
+#### 5. Make Predictions
+
+- Use the trained model to predict y_pred on X_test.
+
+#### 6. Evaluate Model
+
+- Compute accuracy score.
+
+- Generate classification report (precision, recall, F1-score).
+
+- Compute confusion matrix.
+
+#### 7. Analyze Data
+
+- Plot correlation heatmap of features.
+
+- Plot top important features according to the model.
+
+- Plot distribution of earthquake magnitude.
+
+- Visualize confusion matrix.
 
 ### Program:
 ``` 
@@ -82,6 +124,11 @@ plt.show()
 
 ### Output:
 
+<img width="609" height="277" alt="{03934D9B-B8E3-48D2-9813-E3B04BCC918B}" src="https://github.com/user-attachments/assets/c7b77f6d-963a-4c1d-a476-e4561a7d24bf" />
+<img width="830" height="589" alt="image" src="https://github.com/user-attachments/assets/e2348b27-9271-4df3-acab-de497252568e" /> 
+<img width="899" height="547" alt="image" src="https://github.com/user-attachments/assets/eb55d4f2-4abc-47a5-960c-cda7866c9096" /> 
+<img width="695" height="470" alt="image" src="https://github.com/user-attachments/assets/c0282ed9-6e62-4771-b8d4-cafc7b078981" /> 
+<img width="501" height="393" alt="image" src="https://github.com/user-attachments/assets/e9d91907-6256-41d8-9bb5-d693dfeff282" />
 
 
 ### Result:
