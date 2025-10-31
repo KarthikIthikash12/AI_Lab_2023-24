@@ -2,13 +2,86 @@
 ### DATE:                                                                            
 ### REGISTER NUMBER : 
 ### AIM: 
-To write a program to train the classifier for -----------------.
+To write a program to train the classifier to predict whether a tsunami can occur or not.
 ###  Algorithm:
 
-### Program:
 
+### Program:
+``` 
+# ----- Import Libraries -----
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
+
+# ----- Step 1: Load Dataset -----
+df = pd.read_csv("earthquake_data_tsunami.csv")
+print("✅ Data Loaded Successfully!\n")
+print(df.head())
+
+# ----- Step 2: Define Features and Target -----
+X = df.drop(columns=['tsunami'])
+y = df['tsunami']
+
+# ----- Step 3: Split into Train & Test -----
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42, stratify=y
+)
+
+# ----- Step 4: Train Model -----
+model = RandomForestClassifier(
+    n_estimators=150, max_depth=10, random_state=42
+)
+model.fit(X_train, y_train)
+
+# ----- Step 5: Predict & Evaluate -----
+y_pred = model.predict(X_test)
+acc = accuracy_score(y_test, y_pred)
+
+print(f"\n🎯 Model Accuracy: {acc*100:.2f}%")
+print("\nClassification Report:\n", classification_report(y_test, y_pred))
+
+# ----- Step 6: 4 Graphs for Analysis -----
+
+# 1️⃣ Correlation Heatmap
+plt.figure(figsize=(10, 6))
+sns.heatmap(df.corr(), cmap='coolwarm', annot=False)
+plt.title("Correlation Heatmap of Earthquake Features")
+plt.show()
+
+# 2️⃣ Feature Importance
+feat_imp = pd.Series(model.feature_importances_, index=X.columns).sort_values(ascending=False)
+plt.figure(figsize=(10, 6))
+sns.barplot(x=feat_imp[:10], y=feat_imp.index[:10])
+plt.title("Top 10 Important Features for Tsunami Prediction")
+plt.xlabel("Importance")
+plt.ylabel("Feature")
+plt.show()
+
+# 3️⃣ Magnitude Distribution
+plt.figure(figsize=(8, 5))
+sns.histplot(df['magnitude'], bins=20, kde=True)
+plt.title("Earthquake Magnitude Distribution")
+plt.xlabel("Magnitude")
+plt.ylabel("Count")
+plt.show()
+
+# 4️⃣ Confusion Matrix
+cm = confusion_matrix(y_test, y_pred)
+plt.figure(figsize=(6, 4))
+sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')
+plt.title("Confusion Matrix")
+plt.xlabel("Predicted")
+plt.ylabel("Actual")
+plt.show()
+
+```
 
 ### Output:
+
 
 
 ### Result:
